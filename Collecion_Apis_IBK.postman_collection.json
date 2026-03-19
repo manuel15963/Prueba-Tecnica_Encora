@@ -1,0 +1,974 @@
+{
+	"info": {
+		"_postman_id": "81e4b2c4-c317-4fe3-aa79-d4078e18f9b2",
+		"name": "Api WorkshopIBK",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1961221"
+	},
+	"item": [
+		{
+			"name": "1_Auth",
+			"item": [
+				{
+					"name": "Add User&Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "      {\r\n        \"document\": \"460865544\",\r\n        \"typeDocument\": \"DNI\",\r\n        \"firstname\": \"John\",\r\n        \"lastname\": \"Doe\",\r\n        \"address\": \"123 Main Street, Lima\",\r\n        \"email\": \"john.doe@example.com\",\r\n        \"phoneNumber\": \"945749\",\r\n        \"username\": \"johndoe\",\r\n        \"password\": \"securePassword123\",\r\n        \"accountNumber\": \"1234567890196\",\r\n        \"bankingEntity\": \"Banco Nacional\",\r\n        \"deviceSerial\": \"DEVICE123\",\r\n        \"currency\": \"PEN\"\r\n      }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}auth/api/register",
+							"host": [
+								"{{url}}auth"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "      {\r\n        \"username\": \"johndoe\",\r\n        \"password\": \"securePassword123\"\r\n      }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/api/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Duplicate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "      {\r\n        \"firstname\": \"John\",\r\n        \"lastname\": \"Doe\",\r\n        \"address\": \"123 Main Street, Lima\",\r\n        \"email\": \"john.doe@example.com\",\r\n        \"typeDocument\": \"DNI\",\r\n        \"document\": \"460865541\",\r\n        \"phoneNumber\": \"945749\",\r\n        \"username\": \"johndoe1\",\r\n        \"password\": \"securePassword1234\"\r\n      }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/api/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2_User",
+			"item": [
+				{
+					"name": "Add User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "      {\r\n        \"document\": \"460865549\",\r\n        \"typeDocument\": \"DNI\",\r\n        \"firstname\": \"John5\",\r\n        \"lastname\": \"Doe\",\r\n        \"address\": \"123 Main Street, Lima\",\r\n        \"email\": \"john.doe@example.com\",\r\n        \"phoneNumber\": \"9457450\"\r\n      }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/api",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"api"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/api",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"api"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/api/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"api",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "460865549"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n      \"firstname\": \"John1\",\r\n      \"address\": \"124 Main Street, Lima\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/api/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"api",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "460865549"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/api/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"api",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "460865549"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3_Account",
+			"item": [
+				{
+					"name": "Add Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n            \"phoneNumber\": \"9457450\",\r\n            \"document\": \"460865549\",\r\n            \"accountNumber\": \"123456789011\",\r\n            \"bankingEntity\": \"Banco Nacional\",\r\n            \"deviceSerial\": \"DEVICE123\",\r\n            \"dailyLimit\": 1000.00,\r\n            \"operationLimit\": 5000.00,\r\n            \"username\": \"johndoe2\",\r\n            \"password\": \"securePassword123\",\r\n            \"currency\": \"PEN\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/api",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"api"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Account",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/api/all/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"api",
+								"all",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "460865549"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/api/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"api",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9457450"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n      \"bankingEntity\": \"Banco Nacional\",\r\n      \"dailyLimit\": 2001.00\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/api/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"api",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9457450"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/api/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"api",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9457450"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4_Balance",
+			"item": [
+				{
+					"name": "Add Balance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n      \"phoneNumber\": \"945749\",\r\n      \"originAccount\": \"1234567890196\",\r\n      \"balanceAmount\": 1500.50\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/balance/api",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"balance",
+								"api"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Balance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/balance/api",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"balance",
+								"api"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Balance by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/balance/api/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"balance",
+								"api",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "945749"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Balance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n      \"balanceAmount\": 2000.00\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/balance/api/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"balance",
+								"api",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "945749"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Balance by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/balance/api/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"balance",
+								"api",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "945749"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5_Transfer",
+			"item": [
+				{
+					"name": "Add Transfer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n      \"originNumber\": \"945749\",\r\n      \"originAccount\": \"1234567890196\",\r\n      \"targetNumber\": \"977666555\",\r\n      \"targetAccount\": \"112233445566\",\r\n      \"amount\": 1500.50,\r\n      \"transferType\": \"TRANSFER\",\r\n      \"transferStatus\": \"PENDING\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/transfer/api",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transfer",
+								"api"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Transfer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/transfer/api",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transfer",
+								"api"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transfer by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/transfer/api/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transfer",
+								"api",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "945749"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Transfer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n      \"amount\": 2000.00\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/transfer/api/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transfer",
+								"api",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "945749"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Transfer by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/api/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"api",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "945749"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
